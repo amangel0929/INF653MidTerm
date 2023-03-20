@@ -98,7 +98,7 @@
                 return true;
             }
 
-            printf("Missing Required Parameters.\n", $stmt->error);
+            printf("Missing Required Parameters", $stmt->error);
 
             return false;
         }
@@ -131,7 +131,7 @@
                 return true;
             }
 
-            printf("Missing Required Parameters.\n", $stmt->error);
+            printf("Missing Required Parameters", $stmt->error);
 
             return false;
         }
@@ -155,7 +155,7 @@
             }
 
             //Print error if something goes wrong
-            printf("Missing Required Parameters.\n", $stmt->error);
+            printf("Missing Required Parameters", $stmt->error);
 
             return false;
         }
