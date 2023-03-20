@@ -10,11 +10,11 @@
     }else($method === 'GET'){
         include_once '../../api/authors/read.php';
         include_once '../../api/authors/read_single.php';
-    }else(method === 'POST'){
+    }else($method === 'POST'){
         include_once '../../api/authors/create.php';
-    }else(method === 'PUT'){
+    }else($method === 'PUT'){
         include_once '../../api/authors/update.php';
-    }else(method === 'DELETE'){
+    }else($method === 'DELETE'){
         include_once '../../api/authors/delete.php';
     }
 ?>

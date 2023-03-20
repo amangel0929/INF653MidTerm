@@ -10,11 +10,11 @@
     }else($method === 'GET'){
         include_once '../../api/quotes/read.php';
         include_once '../../api/quotes/read_single.php';
-    }else(method === 'POST'){
+    }else($method === 'POST'){
         include_once '../../api/quotes/create.php';
-    }else(method === 'PUT'){
+    }else($method === 'PUT'){
         include_once '../../api/quotes/update.php';
-    }else(method === 'DELETE'){
+    }else($method === 'DELETE'){
         include_once '../../api/quotes/delete.php';
     }
 ?>

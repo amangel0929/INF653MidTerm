@@ -10,11 +10,11 @@
     }else($method === 'GET'){
         include_once '../../api/categories/read.php';
         include_once '../../api/categories/read_single.php';
-    }else(method === 'POST'){
+    }else($method === 'POST'){
         include_once '../../api/categories/create.php';
-    }else(method === 'PUT'){
+    }else($method === 'PUT'){
         include_once '../../api/categories/update.php';
-    }else(method === 'DELETE'){
+    }else($method === 'DELETE'){
         include_once '../../api/categories/delete.php';
     }
 
