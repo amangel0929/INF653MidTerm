@@ -16,18 +16,18 @@
 
         public function read(){
             //Create query
-            $query = 'SELECT 
+            $query = "SELECT 
                 c.id as category_id,
                 a.id as author_id,
                 q.id,
                 q.quote  
 
                 FROM
-                ' . $this->table . ' q 
+                " . $this->table . " q 
                 LEFT JOIN
                     categories c ON q.category_id = c.id
                 LEFT JOIN
-                    authors a ON q.author_id = a.id';
+                    authors a ON q.author_id = a.id";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -40,20 +40,20 @@
 
         //Get Single Post
         public function read_single() {
-            $query = 'SELECT 
+            $query = "SELECT
                 c.id as category_id,
                 a.id as author_id,
                 q.quote
 
-            FROM 
-                ' . $this->table . ' q 
+            FROM
+                " . $this->table . " q
             LEFT JOIN
                     categories c ON q.category_id = c.id
             LEFT JOIN
                     authors a ON q.author_id = a.id
             WHERE
                 id = ?
-            LIMIT 0,1';
+            LIMIT 0,1";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -74,11 +74,11 @@
 
         //Create Quote
         public function create() {
-            $query = 'INSERT INTO ' . $this->table . '
-            SET 
+            $query = "INSERT INTO " . $this->table . "
+            SET
                 quote = :quote,
                 author_id = :author_id,
-                category_id = :category_id';
+                category_id = :category_id";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -105,13 +105,13 @@
 
         //Update Quote
         public function update() {
-            $query = 'UPDATE ' . $this->table . '
-            SET 
+            $query = "UPDATE " . $this->table . "
+            SET
                 quote = :quote,
                 author_id = :author_id,
                 category_id = :category_id
-            WHERE 
-                id = :id';
+            WHERE
+                id = :id";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -138,7 +138,7 @@
 
         //Delete Quote
         public function delete() {
-            $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+            $query = "DELETE FROM " . $this->table . " WHERE id = :id";
 
              //Prepare statement
              $stmt = $this->conn->prepare($query);

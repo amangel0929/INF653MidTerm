@@ -13,11 +13,11 @@
         }
 
         public function read(){
-            $query = 'SELECT
+            $query = "SELECT
                 id,
                 category
                 FROM
-                ' . $this->table;
+                " . $this->table;
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -30,13 +30,13 @@
 
         //Get Single Post
         public function read_single() {
-            $query = 'SELECT
+            $query = "SELECT
                 category
             FROM
-                ' . $this->table . '
+                " . $this->table . "
             WHERE
                 id = ?
-            LIMIT 0,1';
+            LIMIT 0,1";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -53,9 +53,9 @@
 
         //Create Category
         public function create() {
-            $query = 'INSERT INTO ' . $this->table . '
+            $query = "INSERT INTO " . $this->table . "
             SET
-                category = :category';
+                category = :category";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -78,13 +78,12 @@
 
         //Update Category
         public function update() {
-            $query = 'UPDATE ' . $this->table . '
+            $query = "UPDATE " . $this->table . "
             SET
                 id = :id,
                 category = :category
             WHERE
-                id = :id';
-                ;
+                id = :id";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -109,7 +108,7 @@
 
         //Delete Category
         public function delete() {
-            $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+            $query = "DELETE FROM " . $this->table . " WHERE id = :id";
 
              //Prepare statement
              $stmt = $this->conn->prepare($query);
