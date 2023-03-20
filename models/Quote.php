@@ -16,14 +16,14 @@
 
         public function read(){
             //Create query
-            $query = 'SELECT
+            $query = 'SELECT 
                 c.id as category_id,
                 a.id as author_id,
                 q.id,
                 q.quote  
 
                 FROM
-                ' . $this->table . ' q
+                ' . $this->table . ' q 
                 LEFT JOIN
                     categories c ON q.category_id = c.id
                 LEFT JOIN
@@ -40,13 +40,13 @@
 
         //Get Single Post
         public function read_single() {
-            $query = 'SELECT
+            $query = 'SELECT 
                 c.id as category_id,
                 a.id as author_id,
                 q.quote
 
-            FROM
-                ' . $this->table . ' q
+            FROM 
+                ' . $this->table . ' q 
             LEFT JOIN
                     categories c ON q.category_id = c.id
             LEFT JOIN
@@ -75,7 +75,7 @@
         //Create Quote
         public function create() {
             $query = 'INSERT INTO ' . $this->table . '
-            SET
+            SET 
                 quote = :quote,
                 author_id = :author_id,
                 category_id = :category_id';
@@ -106,11 +106,11 @@
         //Update Quote
         public function update() {
             $query = 'UPDATE ' . $this->table . '
-            SET
+            SET 
                 quote = :quote,
                 author_id = :author_id,
                 category_id = :category_id
-            WHERE
+            WHERE 
                 id = :id';
 
             //Prepare statement
