@@ -7,10 +7,6 @@
         public $id;
         public $category;
 
-        //Constructor with DB
-        public function __construct($db){
-            $this->conn = $db;
-        }
 
         public function read(){
             $query = "SELECT

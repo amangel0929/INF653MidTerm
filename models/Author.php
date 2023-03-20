@@ -7,11 +7,6 @@
         public $id;
         public $author;
 
-        //Constructor with DB
-        public function __construct($db){
-            $this->conn = $db;
-        }
-
         public function read(){
             $query = "SELECT
                 id,
