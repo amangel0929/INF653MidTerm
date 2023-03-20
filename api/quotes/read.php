@@ -30,7 +30,7 @@ if($num >0) {
             'id' => $id,
             'quote' => $author,
             'category_id' => $category_id,
-            'author_id' => $author_id;
+            'author_id' => $author_id
         );
 
         //Push to array

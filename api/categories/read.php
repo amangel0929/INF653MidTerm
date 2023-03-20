@@ -28,7 +28,7 @@
 
             $category_item = array(
                 'id' => $id,
-                'category' => $category;
+                'category' => $category
             );
 
             //Push to "data"
