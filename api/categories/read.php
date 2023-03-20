@@ -35,7 +35,7 @@
             array_push($category_arr[], $category_item);
         }
         //Turn to json and output
-        echo json_encode($category_arr[]);
+        echo json_encode($category_arr);
     } else {
         $message = array("message" => "category_id Not Found");
         echo json_encode($message);
