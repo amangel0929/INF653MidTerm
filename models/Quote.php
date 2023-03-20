@@ -10,7 +10,7 @@
         public $category_id;
 
         //Constructor with DB
-        public function __contruct($db){
+        public function __construct($db){
             $this->conn = $db;
         }
 
