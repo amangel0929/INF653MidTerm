@@ -8,7 +8,6 @@
         header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
         exit();
     }
-    include_once '../../config/';
-    include_once '../../models/';
+
 
 ?>
