@@ -14,7 +14,7 @@
     $quote = new Quote($db);
 
     //Get raw posted data
-    $data = json_decode(file_get_contents("php://input"));
+    $data = json_decode(file_get_contents('php://input'));
 
     $quote->quote = $data->quote;
     $quote->author_id = $data->author_id;
@@ -22,10 +22,10 @@
 
 
     if($quote->create()) {
-        $message = ["message" => 'Quote Created']
+        $message = ["message" => "Quote Created"]
         echo json_encode($message);
     } else {
-        $message = ["message" => 'No Quotes Found']
+        $message = ["message" => "No Quotes Found"]
         echo json_encode($message);
     }
 ?>

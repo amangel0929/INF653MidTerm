@@ -14,16 +14,16 @@
     $author = new Author($db);
 
     //Get raw posted data
-    $data = json_decode(file_get_contents("php://input"));
+    $data = json_decode(file_get_contents('php://input'));
 
     $author->author = $data->author;
 
 
     if($author->create()) {
-        $message = ["message" => 'Author Created']
+        $message = ["message" => "Author Created"]
         echo json_encode($message);
     } else {
-        $message = ["message" => 'author-id Not found']
+        $message = ["message" => "author-id Not found"]
         echo json_encode($message);
     }
 ?>

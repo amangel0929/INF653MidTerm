@@ -14,17 +14,17 @@
     $author = new Author($db);
 
     //Get raw posted data
-    $data = json_decode(file_get_contents("php://input"));
+    $data = json_decode(file_get_contents('php://input'));
 
     //Set ID to update
     $author->id = $data->id;
 
     //Delete author
     if($author->delete()) {
-        $message = ["message" => 'Author Deleted']
+        $message = ["message" => "Author Deleted"]
         echo json_encode($message);
     } else {
-        $message = ["message" => 'author-id Not found']
+        $message = ["message" => "author-id Not found"]
         echo json_encode($message);
     }
 ?>

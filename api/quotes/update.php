@@ -14,7 +14,7 @@
     $quote = new Quote($db);
 
     //Get raw posted data
-    $data = json_decode(file_get_contents("php://input"));
+    $data = json_decode(file_get_contents('php://input'));
 
     //Set ID to update
     $quote->id = $data->id;
@@ -25,10 +25,10 @@
 
 
     if($quote->update()) {
-        $message = ["message" => 'Quote Updated']
+        $message = ["message" => "Quote Updated"]
         echo json_encode($message);
     } else {
-        $message = ["message" => 'No Quotes Found']
+        $message = ["message" => "No Quotes Found"]
         echo json_encode($message);
     }
 ?>

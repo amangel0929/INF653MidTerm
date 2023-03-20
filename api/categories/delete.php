@@ -14,17 +14,17 @@
     $category = new Category($db);
 
     //Get raw posted data
-    $data = json_decode(file_get_contents("php://input"));
+    $data = json_decode(file_get_contents('php://input'));
 
     //Set ID to update
     $category->id = $data->id;
 
     //Delete category
     if($category->delete()) {
-        $message = ["message" => 'Category Deleted']
+        $message = ["message" => "Category Deleted"]
         echo json_encode($message);
     } else {
-        $message = ["message" => 'category-id Not found']
+        $message = ["message" => "category-id Not found"]
         echo json_encode($message);
     }
 ?>
