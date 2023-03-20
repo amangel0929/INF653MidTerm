@@ -20,10 +20,10 @@
 
 
     if($category->create()) {
-        $message = ["message" => "Category Created"]
+        $message = array("message" => "Category Created");
         echo json_encode($message);
     } else {
-        $message = ["message" => "category-id Not found"]
+        $message = array("message" => "category_id Not Found");
         echo json_encode($message);
     }
 ?>

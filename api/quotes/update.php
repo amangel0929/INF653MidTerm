@@ -25,10 +25,10 @@
 
 
     if($quote->update()) {
-        $message = ["message" => "Quote Updated"]
+        $message = array("message" => "Quote Updated");
         echo json_encode($message);
     } else {
-        $message = ["message" => "No Quotes Found"]
+        $message = array("message" => "No Quotes Found");
         echo json_encode($message);
     }
 ?>

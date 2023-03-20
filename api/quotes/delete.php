@@ -21,10 +21,10 @@
 
     //Delete quote
     if($quote->delete()) {
-        $message = ["message" => "Quote Deleted"]
+        $message = array("message" => "Quote Deleted");
         echo json_encode($message);
     } else {
-        $message = ["message" => "No Quotes Found"]
+        $message = array("message" => "No Quotes Found");
         echo json_encode($message);
     }
 ?>
