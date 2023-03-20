@@ -8,17 +8,17 @@
         private $password;
 
         public function __construct(){
-            $this->username = getEnv('USERNAME');
-            $this->password = getEnv('PASSWORD');
-            $this-> dbname = getEnv('DBNAME');
-            $this->host = getEnv('HOST');
-            $this->port = getEnv('PORT');
+            $this->username = getenv('USERNAME');
+            $this->password = getenv('PASSWORD');
+            $this-> dbname = getenv('DBNAME');
+            $this->host = getenv('HOST');
+            $this->port = getenv('PORT');
         }
 
 
         public function connect() {
             if ($this->conn) {
-                return this->conn;
+                return $this->conn;
             } else {
 
             $dsn = "pgsql:host={$this->host};port={$this->port};dbname={$this->db_name}";
