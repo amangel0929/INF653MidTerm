@@ -37,8 +37,7 @@
         //Turn to json and output
         echo json_encode($category_arr);
     } else {
-        echo json_encode(
-            array('message' => 'category_id Not Found')
-        );
+        $message = ["message" => 'category-id Not found']
+        echo json_encode($message);
     }
 ?>

@@ -20,7 +20,7 @@
                 c.id as category_id,
                 a.id as author_id,
                 q.id,
-                q.quote
+                q.quote  
 
                 FROM
                 ' . $this->table . ' q

@@ -23,12 +23,10 @@
 
 
     if($author->update()) {
-        echo json_encode(
-            array('message' => 'Author Updated')
-        );
+        $message = ["message" => 'Author Updated']
+        echo json_encode($message);
     } else {
-        echo json_encode(
-            array('message' => 'Author Not Updated')
-        );
+        $message = ["message" => 'author-id Not found']
+        echo json_encode($message);
     }
 ?>

@@ -21,12 +21,10 @@
 
     //Delete category
     if($category->delete()) {
-        echo json_encode(
-            array('message' => 'Category Deleted')
-        );
+        $message = ["message" => 'Category Deleted']
+        echo json_encode($message);
     } else {
-        echo json_encode(
-            array('message' => 'category_id Not Found')
-        );
+        $message = ["message" => 'category-id Not found']
+        echo json_encode($message);
     }
 ?>

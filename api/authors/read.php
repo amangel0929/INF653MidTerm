@@ -32,13 +32,12 @@
             );
 
             //Push to "data"
-            array_push($authors_arr['data'], $author_item);
+            array_push($authors_arr[], $author_item);
         }
         //Turn to json and output
         echo json_encode($authors_arr);
     } else {
-        echo json_encode(
-            array('message' => 'author_id Not Found')
-        );
+        $message = ["message" => 'author-id Not found']
+        echo json_encode($message);
     }
 ?>

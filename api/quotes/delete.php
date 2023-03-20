@@ -19,14 +19,12 @@
     //Set ID to update
     $quote->id = $data->id;
 
-    //Delete author
+    //Delete quote
     if($quote->delete()) {
-        echo json_encode(
-            array('message' => 'Quote Deleted')
-        );
+        $message = ["message" => 'Quote Deleted']
+        echo json_encode($message);
     } else {
-        echo json_encode(
-            array('message' => 'No Quotes Found')
-        );
+        $message = ["message" => 'No Quotes Found']
+        echo json_encode($message);
     }
 ?>

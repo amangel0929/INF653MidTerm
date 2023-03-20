@@ -21,12 +21,10 @@
 
     //Delete author
     if($author->delete()) {
-        echo json_encode(
-            array('message' => 'Author Deleted')
-        );
+        $message = ["message" => 'Author Deleted']
+        echo json_encode($message);
     } else {
-        echo json_encode(
-            array('message' => 'author_id Not Found')
-        );
+        $message = ["message" => 'author-id Not found']
+        echo json_encode($message);
     }
 ?>

@@ -20,12 +20,10 @@
 
 
     if($author->create()) {
-        echo json_encode(
-            array('message' => 'Author Created')
-        );
+        $message = ["message" => 'Author Created']
+        echo json_encode($message);
     } else {
-        echo json_encode(
-            array('message' => 'author_id Not Found')
-        );
+        $message = ["message" => 'author-id Not found']
+        echo json_encode($message);
     }
 ?>

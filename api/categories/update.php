@@ -23,12 +23,10 @@
 
 
     if($category->update()) {
-        echo json_encode(
-            array('message' => 'Category Updated')
-        );
+        $message = ["message" => 'Category Updated']
+        echo json_encode($message);
     } else {
-        echo json_encode(
-            array('message' => 'category_id Not Found')
-        );
+        $message = ["message" => 'category-id Not found']
+        echo json_encode($message);
     }
 ?>

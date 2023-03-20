@@ -40,8 +40,7 @@ if($num >0) {
     //Turn to json and output
     echo json_encode($quotes_arr);
 } else {
-    echo json_encode(
-        array('message' => 'No Quotes Found')
-    );
+    $message = ["message" => 'No Quotes Found']
+        echo json_encode($message);
 }
 ?>

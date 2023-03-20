@@ -22,12 +22,10 @@
 
 
     if($quote->create()) {
-        echo json_encode(
-            array('message' => 'Quote Created')
-        );
+        $message = ["message" => 'Quote Created']
+        echo json_encode($message);
     } else {
-        echo json_encode(
-            array('message' => 'No Quotes Found')
-        );
+        $message = ["message" => 'No Quotes Found']
+        echo json_encode($message);
     }
 ?>
