@@ -28,8 +28,7 @@
         );
     } else {
         echo json_encode(
-            array('message' => 'Author Not Updated'),
-            JSON_FORCE_OBJECT
+            array('message' => 'Author Not Updated')
         );
     }
 ?>
