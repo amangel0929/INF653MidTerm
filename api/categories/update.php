@@ -5,8 +5,8 @@
     header('Access-Control-Allow-Origin:PUT');
     header('Access-Control-Allow-Origin:Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods,Authorization,X-Requested-With');
 
-    include_once '../../config/';
-    include_once '../../models/';
+    include_once '../../config/Database.php';
+    include_once '../../models/Category.php';
 
     $database = new Database();
     $db = $database->connect();
