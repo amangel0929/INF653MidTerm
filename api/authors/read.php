@@ -28,7 +28,7 @@
 
             $author_item = array(
                 'id' => $id,
-                'author' => $author;
+                'author' => $author
             );
 
             //Push to "data"

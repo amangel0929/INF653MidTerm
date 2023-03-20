@@ -1,5 +1,5 @@
 <?php
-    class Database {
+    class Database{
         private $conn;
         private $host;
         private $port;
