@@ -24,7 +24,7 @@ if($num >0) {
 
         $quote_item = array(
             'id' => $id,
-            'quote' => $author,
+            'quote' => $quote,
             'category_id' => $category_id,
             'author_id' => $author_id
         );
