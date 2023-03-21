@@ -11,6 +11,7 @@
     //Get raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
+    $author->id = isset($_GET['id']) ? $_GET['id'] : die();
     $author->author = $data->author;
 
 
