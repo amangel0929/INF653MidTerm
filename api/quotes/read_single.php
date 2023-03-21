@@ -10,8 +10,6 @@
 
     //Get ID
     $quote->id = isset($_GET['id']) ? $_GET['id'] : die();
-    $quote->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
-    $quote->author_id = isset($_GET['author_id']) ? $_GET['author_id'] : die();
 
     //Get quote
     $quote->read_single();
@@ -23,7 +21,7 @@
         'category' =>$quote->category,
         'author' =>$quote->author
     );
-    if(is_null($quote)){
+    if(is_null($id)){
         $message = array("message" => "No Quotes Found");
         echo json_encode($message);
     } else if(is_null($category_id)){

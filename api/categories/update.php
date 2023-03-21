@@ -21,8 +21,5 @@
     } else if($category->update()) {
         $message = array("message" => "Category Updated");
         echo json_encode($message);
-    } else {
-        $message = array("message" => "Missing Required Parameters");
-        echo json_encode($message);
-    }
+    } 
 ?>

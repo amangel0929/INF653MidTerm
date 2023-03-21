@@ -20,8 +20,5 @@
     }else if($author->update()) {
         $message = array("message" => "Author Updated");
         echo json_encode($message);
-    } else {
-        $message = array("message" => "Missing Required Parameters");
-        echo json_encode($message);
     }
 ?>
