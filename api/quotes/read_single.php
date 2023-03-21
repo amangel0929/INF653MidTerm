@@ -21,13 +21,13 @@
         'category' =>$quote->category,
         'author' =>$quote->author
     );
-    if(is_null($id)){
+    if(is_null($quote_arr['id'])){
         $message = array("message" => "No Quotes Found");
         echo json_encode($message);
-    } else if(is_null($category_id)){
+    } else if(is_null($quote_arr['category'])){
         $message = array("message" => "category_id Not Found");
         echo json_encode($message);
-    } else if(is_null($author_id)){
+    } else if(is_null($quote_arr['author'])){
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);
     } else{
