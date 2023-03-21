@@ -17,8 +17,8 @@
         public function read(){
             //Create query
             $query = "SELECT 
-                id,
-                quote,
+                quotes.id,
+                quotes.quote,
                 categories.category,
                 authors.author
                 FROM
@@ -40,8 +40,8 @@
         //Get Single Post
         public function read_single() {
             $query = "SELECT 
-                id,
-                quote,
+                quotes.id,
+                quotes.quote,
                 categories.category as category,
                 authors.author as author 
             FROM
