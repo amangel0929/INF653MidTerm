@@ -16,8 +16,10 @@
 
     //Delete author
     if($author->delete()) {
-        $message = array("message" => "Author Deleted");
-        echo json_encode($message);
+        $delete_arr = array(
+            'id' => $author->id,
+        );
+            print_r(json_encode($author_arr));
     }else if(is_null($author_id)){
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);
