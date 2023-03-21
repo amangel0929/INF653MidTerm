@@ -24,8 +24,8 @@
             $quote_item = array(
                 'id' => $id,
                 'quote' => $quote,
-                'category_id' => $category_id,
-                'author_id' => $author_id
+                'category' => $category,
+                'author' => $author
             );
 
             //Push to array
