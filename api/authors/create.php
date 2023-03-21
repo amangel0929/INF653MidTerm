@@ -15,8 +15,7 @@
 
 
     if($author->create()) {
-        $message = array("message" => "Author Created");
-        echo json_encode($message);
+        echo json_encode(read_single());
     } else {
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);
