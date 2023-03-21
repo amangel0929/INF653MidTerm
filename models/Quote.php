@@ -16,13 +16,16 @@
         
         public function read(){
             //Create query
-            $query = "SELECT * 
+            $query = "SELECT 
+                quotes.*,
+                categories.category as category,
+                authors.author as author 
                 FROM
                 " . $this->table . "
                 LEFT JOIN
-                    categories ON category_id = category
+                    categories ON quotes.category_id = categories.category
                 LEFT JOIN
-                    authors ON author_id = author";
+                    authors ON quotes.author_id = authors.author";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -35,13 +38,16 @@
 
         //Get Single Post
         public function read_single() {
-            $query = "SELECT *
+            $query = "SELECT 
+                quotes.*,
+                categories.category as category,
+                authors.author as author 
             FROM
                 " . $this->table . " 
             LEFT JOIN
-                categories ON category_id = category
+                categories ON quotes.category_id = categories.category
             LEFT JOIN
-                authors ON author_id = author
+                authors ON quotes.author_id = authors.author
             WHERE
                 id =" .$_GET['id'] . ",
                 category_id =" .$_GET['category_id'] . ",
