@@ -21,7 +21,10 @@
         'category' => $category->category
     );
 
-    //Make json
-    print_r(json_encode($category_arr));
-
+    if($category === null){
+        $message = array("message" => "category_id Not Found");
+        echo json_encode($message);
+    } else{
+        print_r(json_encode($category_arr));
+    }
 ?>
