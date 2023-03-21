@@ -114,7 +114,7 @@
 
         //Delete Author
         public function delete() {
-            $query = 'DELETE FROM ' . $this->table . ' WHERE id ='.$_GET['id'];
+            $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
 
              //Prepare statement
              $stmt = $this->conn->prepare($query);

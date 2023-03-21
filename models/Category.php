@@ -58,9 +58,9 @@
 
         //Create Category
         public function create() {
-            $query = "INSERT INTO " . $this->table . "
+            $query = "INSERT INTO " . $this->table . " (category)
             VALUES
-                category";
+                (:category)";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -112,7 +112,7 @@
 
         //Delete Category
         public function delete() {
-            $query = "DELETE FROM " . $this->table . " WHERE id =".$_GET['id'];
+            $query = "DELETE FROM " . $this->table . " WHERE id = :id";
 
              //Prepare statement
              $stmt = $this->conn->prepare($query);
