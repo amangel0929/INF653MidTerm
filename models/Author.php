@@ -34,8 +34,7 @@
             FROM
                 " . $this->table . "
             WHERE
-                id = ?
-            LIMIT 0,1";
+                id =".$_GET['id'];
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -53,8 +52,9 @@
         //Create Author
         public function create() {
             $query = "INSERT INTO " . $this->table . "
-            SET
-                author = :author";
+            VALUES
+                id,
+                author";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -79,7 +79,6 @@
         public function update() {
             $query = "UPDATE " . $this->table . "
             SET
-                id = :id,
                 author = :author
             WHERE
                 id = :id";
@@ -107,7 +106,7 @@
 
         //Delete Author
         public function delete() {
-            $query = "DELETE FROM " . $this->table . " WHERE id = :id";
+            $query = "DELETE FROM " . $this->table . " WHERE id =".$_GET['id'];
 
              //Prepare statement
              $stmt = $this->conn->prepare($query);

@@ -16,18 +16,13 @@
         
         public function read(){
             //Create query
-            $query = "SELECT 
-                c.id as category_id,
-                a.id as author_id,
-                q.id,
-                q.quote  
-
+            $query = "SELECT * 
                 FROM
-                " . $this->table . " q 
+                " . $this->table . "
                 LEFT JOIN
-                    categories c ON q.category_id = c.id
+                    categories ON category_id = category
                 LEFT JOIN
-                    authors a ON q.author_id = a.id";
+                    authors ON author_id = author";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -40,20 +35,17 @@
 
         //Get Single Post
         public function read_single() {
-            $query = "SELECT
-                c.id as category_id,
-                a.id as author_id,
-                q.quote
-
+            $query = "SELECT *
             FROM
-                " . $this->table . " q
+                " . $this->table . " 
             LEFT JOIN
-                    categories c ON q.category_id = c.id
+                categories ON category_id = category
             LEFT JOIN
-                    authors a ON q.author_id = a.id
+                authors ON author_id = author
             WHERE
-                id = ?
-            LIMIT 0,1";
+                id =" .$_GET['id']",
+                category_id =" .$_GET['category_id']",
+                author_id =" .$_GET['author_id'];
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -75,7 +67,8 @@
         //Create Quote
         public function create() {
             $query = "INSERT INTO " . $this->table . "
-            SET
+            VALUES
+                id = :id,
                 quote = :quote,
                 author_id = :author_id,
                 category_id = :category_id";
@@ -84,11 +77,13 @@
             $stmt = $this->conn->prepare($query);
 
             //Clean data
+            $this->id = htmlspecialchars(strip_tags($this->id));
             $this->quote = htmlspecialchars(strip_tags($this->quote));
             $this->author_id = htmlspecialchars(strip_tags($this->author_id));
             $this->category_id = htmlspecialchars(strip_tags($this->category_id));
 
             //Bind data
+            $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':quote', $this->quote);
             $stmt->bindParam(':author_id', $this->author_id);
             $stmt->bindParam(':category_id', $this->category_id);
@@ -138,7 +133,7 @@
 
         //Delete Quote
         public function delete() {
-            $query = "DELETE FROM " . $this->table . " WHERE id = :id";
+            $query = "DELETE FROM " . $this->table . " WHERE id =".$_GET['id'];
 
              //Prepare statement
              $stmt = $this->conn->prepare($query);
