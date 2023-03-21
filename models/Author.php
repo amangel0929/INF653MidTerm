@@ -61,10 +61,10 @@
 
         //Create Author
         public function create() {
-            $query = "INSERT INTO " . $this->table . "
-                (author)
-            VALUES
-                (:author)";
+            $query = 'INSERT INTO ' . $this->table . '
+            SET
+                id = :id,
+                author = :author';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -87,11 +87,11 @@
 
         //Update Author
         public function update() {
-            $query = "UPDATE " . $this->table . "
+            $query = 'UPDATE ' . $this->table . '
             SET
                 author = :author
             WHERE
-                id = :id";
+                id = :id';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -116,7 +116,7 @@
 
         //Delete Author
         public function delete() {
-            $query = "DELETE FROM " . $this->table . " WHERE id =".$_GET['id'];
+            $query = 'DELETE FROM ' . $this->table . ' WHERE id ='.$_GET['id'];
 
              //Prepare statement
              $stmt = $this->conn->prepare($query);
