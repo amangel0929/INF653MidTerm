@@ -9,7 +9,7 @@
     $author = new Author($db);
 
     //Get raw posted data
-    $data = json_decode(file_get_contents('php://input'));
+    $data = json_decode(file_get_contents("php://input"));
 
     //Set ID to update
     $author->id = $data->id;
@@ -18,7 +18,7 @@
     if($author->delete()) {
         $message = array("message" => "Author Deleted");
         echo json_encode($message);
-    } else {
+    }else if(is_null($author_id)){
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);
     }
