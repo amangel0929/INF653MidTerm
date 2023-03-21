@@ -15,8 +15,10 @@
 
     $category->category = $data->category;
 
-
-    if($category->update()) {
+    if(is_null($id)){
+        $message = array("message" => "category_id Not Found");
+        echo json_encode($message);    
+    } else if($category->update()) {
         $message = array("message" => "Category Updated");
         echo json_encode($message);
     } else {

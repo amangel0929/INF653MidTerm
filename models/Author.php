@@ -67,6 +67,7 @@
             $this->author = htmlspecialchars(strip_tags($this->author));
 
             //Bind data
+            $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':author', $this->author);
             
             //Execute query
