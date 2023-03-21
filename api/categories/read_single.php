@@ -22,8 +22,9 @@
     );
 
     if(is_null($category_arr['category'])){
-        $message = array("message" => "category_id Not Found");
-        echo json_encode($message);
+        echo json_encode(
+            array('message' => 'category_id Not Found')
+          );
     } else{
         print_r(json_encode($category_arr));
     }
