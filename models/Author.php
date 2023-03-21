@@ -7,6 +7,10 @@
         public $id;
         public $author;
 
+        public function __construct($db) {
+            $this->conn = $db;
+        }
+        
         public function read(){
             $query = "SELECT
                 id,

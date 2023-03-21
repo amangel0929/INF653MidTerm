@@ -7,7 +7,10 @@
         public $id;
         public $category;
 
-
+        public function __construct($db) {
+            $this->conn = $db;
+        }
+        
         public function read(){
             $query = "SELECT
                 id,
