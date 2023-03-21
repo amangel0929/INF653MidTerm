@@ -52,7 +52,7 @@
             }catch(PDOException $e){
                 echo json_encode(
                     array('message' => 'author_id Not Found')
-                  );
+                  ) . $e->getMessage();
             }
             $this->author = $row['author'];
 
