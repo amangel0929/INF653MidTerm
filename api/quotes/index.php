@@ -7,9 +7,13 @@
         header('Access-Control-Allow-Methods:GET,POST,PUT,DELETE');
         header('Access-Control-Allow-Headers:Origin,Accept,Content-Type,X-Requested-With');
         exit();
-    }else if($method === 'GET'){
-        include_once '../../api/quotes/read.php';
-        include_once '../../api/quotes/read_single.php';
+    }
+    if($method === 'GET'){
+        if(isset($_GET['id'])){
+            include_once '../../api/quotes/read_single.php';
+        }else{
+            include_once '../../api/quotes/read.php';
+        }
     }else if($method === 'POST'){
         include_once '../../api/quotes/create.php';
     }else if($method === 'PUT'){
