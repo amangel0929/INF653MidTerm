@@ -61,13 +61,14 @@
             $stmt = $this->conn->prepare($query);
 
             //Bind ID
-            $stmt->bindParam(1, $this->id);
+            $stmt->bindParam(':id', $this->id);
 
             //Execute statement
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+            $this->id = $row['id'];
             $this->quote = $row['quote'];
             $this->category_id = $row['category_id'];
             $this->author_id = $row['author_id'];
