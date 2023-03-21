@@ -1,6 +1,6 @@
 <?php
 
-    include_once '../../config/';
+    include '../../config/';
     include_once '../../models/';
 
     $database = new Database();
