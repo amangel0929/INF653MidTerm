@@ -43,8 +43,8 @@
             LEFT JOIN
                 authors ON author_id = author
             WHERE
-                id =" .$_GET['id']",
-                category_id =" .$_GET['category_id']",
+                id =" .$_GET['id'] . ",
+                category_id =" .$_GET['category_id'] . ",
                 author_id =" .$_GET['author_id'];
 
             //Prepare statement
