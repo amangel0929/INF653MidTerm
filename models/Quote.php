@@ -6,8 +6,8 @@
         //Quote Properties
         public $id;
         public $quote;
-        public $author;
-        public $category;
+        public $author_id;
+        public $category_id;
 
 
         public function __construct($db) {
@@ -17,17 +17,17 @@
         public function read(){
             //Create query
             $query = "SELECT 
-                c.category,
-                a.author,
-                q.quote,
-                q.id 
+                c.id as category_id,
+                a.id as author_id,
+                q.id,
+                q.quote  
 
                 FROM
                 " . $this->table . " q 
                 LEFT JOIN
-                    categories c ON q.category_id = c.category
+                    categories c ON q.category_id = c.id
                 LEFT JOIN
-                    authors a ON q.author_id = a.author";
+                    authors a ON q.author_id = a.id";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -41,16 +41,16 @@
         //Get Single Post
         public function read_single() {
             $query = "SELECT
-                c.category,
-                a.author,
+                c.id as category_id,
+                a.id as author_id,
                 q.quote
 
             FROM
                 " . $this->table . " q
             LEFT JOIN
-                categories c ON q.category_id = c.category
+                    categories c ON q.category_id = c.id
             LEFT JOIN
-                authors a ON q.author_id = a.author
+                    authors a ON q.author_id = a.id
             WHERE
                 id = ?
             LIMIT 0,1";
@@ -67,35 +67,31 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $this->quote = $row['quote'];
-            $this->category = $row['category'];
-            $this->author = $row['author'];
+            $this->category_id = $row['category_id'];
+            $this->author_id = $row['author_id'];
 
         }
 
         //Create Quote
         public function create() {
-            $query = "INSERT INTO " . $this->table . " q
+            $query = "INSERT INTO " . $this->table . "
             SET
                 quote = :quote,
-                category = :c.category,
-                author = :a.author
-            LEFT JOIN
-                categories c ON q.category_id = c.category
-            LEFT JOIN
-                authors a ON q.author_id = a.author";
+                author_id = :author_id,
+                category_id = :category_id";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
 
             //Clean data
             $this->quote = htmlspecialchars(strip_tags($this->quote));
-            $this->author = htmlspecialchars(strip_tags($this->author));
-            $this->category = htmlspecialchars(strip_tags($this->category));
+            $this->author_id = htmlspecialchars(strip_tags($this->author_id));
+            $this->category_id = htmlspecialchars(strip_tags($this->category_id));
 
             //Bind data
             $stmt->bindParam(':quote', $this->quote);
-            $stmt->bindParam(':authors.author', $this->author);
-            $stmt->bindParam(':categories.category', $this->category);
+            $stmt->bindParam(':author_id', $this->author_id);
+            $stmt->bindParam(':category_id', $this->category_id);
             
             //Execute query
             if($stmt->execute()){
@@ -109,15 +105,11 @@
 
         //Update Quote
         public function update() {
-            $query = "UPDATE " . $this->table . " q
+            $query = "UPDATE " . $this->table . "
             SET
                 quote = :quote,
-                category = :c.category,
-                author = :a.author
-            LEFT JOIN
-                categories c ON q.category_id = c.category
-            LEFT JOIN
-                authors c ON q.author_id = a.author
+                author_id = :author_id,
+                category_id = :category_id
             WHERE
                 id = :id";
 
@@ -126,13 +118,13 @@
 
             //Clean data
             $this->quote = htmlspecialchars(strip_tags($this->quote));
-            $this->author = htmlspecialchars(strip_tags($this->author));
-            $this->category = htmlspecialchars(strip_tags($this->category));
+            $this->author_id = htmlspecialchars(strip_tags($this->author_id));
+            $this->category_id = htmlspecialchars(strip_tags($this->category_id));
 
             //Bind data
             $stmt->bindParam(':quote', $this->quote);
-            $stmt->bindParam(':a.author', $this->author);
-            $stmt->bindParam(':c.category', $this->category);
+            $stmt->bindParam(':author_id', $this->author_id);
+            $stmt->bindParam(':category_id', $this->category_id);
             
             //Execute query
             if($stmt->execute()){
