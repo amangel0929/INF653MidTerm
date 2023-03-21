@@ -58,9 +58,8 @@
 
         //Create Category
         public function create() {
-            $query = "INSERT INTO " . $this->table . " (category)
-            VALUES
-                (:category)";
+            $query = 'INSERT INTO ' . $this->table . ' (category)
+            VALUES (:category)';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -112,7 +111,7 @@
 
         //Delete Category
         public function delete() {
-            $query = "DELETE FROM " . $this->table . " WHERE id = :id";
+            $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
 
              //Prepare statement
              $stmt = $this->conn->prepare($query);
@@ -130,6 +129,7 @@
 
             //Print error if something goes wrong
             printf("Missing Required Parameters", $stmt->error);
+
             return false;
         }
     }

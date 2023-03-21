@@ -39,13 +39,13 @@
 
         //Get Single Post
         public function read_single() {
-            $query = "SELECT 
+            $query = 'SELECT 
                 quotes.id,
                 quotes.quote,
                 categories.category,
                 authors.author 
             FROM
-                " . $this->table . " 
+                ' . $this->table . ' 
             INNER JOIN
                 categories ON quotes.category_id = categories.id
             INNER JOIN
@@ -53,7 +53,7 @@
             WHERE
                 id = ?
             LIMIT
-                1";
+                1';
 
             try{
             //Prepare statement
@@ -79,11 +79,9 @@
 
         //Create Quote
         public function create() {
-            $query = "INSERT INTO " . $this->table . "
-            SET
-                quote = :quote,
-                author_id = :author_id,
-                category_id = :category_id";
+            $query = 'INSERT INTO ' . $this->table . ' (quote, author_id, category_id)
+            VALUES
+                (:quote, :author_id, :category_id)';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -110,13 +108,13 @@
 
         //Update Quote
         public function update() {
-            $query = "UPDATE " . $this->table . "
+            $query = 'UPDATE ' . $this->table . '
             SET
                 quote = :quote,
                 author_id = :author_id,
                 category_id = :category_id
             WHERE
-                id = :id";
+                id = :id';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -143,7 +141,7 @@
 
         //Delete Quote
         public function delete() {
-            $query = "DELETE FROM " . $this->table . " WHERE id =".$_GET['id'];
+            $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
 
              //Prepare statement
              $stmt = $this->conn->prepare($query);
