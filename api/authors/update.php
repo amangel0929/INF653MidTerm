@@ -21,7 +21,7 @@
         $message = array("message" => "Author Updated");
         echo json_encode($message);
     } else {
-        $message = ["message" => "author_id Not found"]
+        $message = array("message" => "Missing Required Parameters");
         echo json_encode($message);
     }
 ?>
