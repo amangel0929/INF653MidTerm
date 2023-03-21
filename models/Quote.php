@@ -19,14 +19,14 @@
             $query = "SELECT 
                 id,
                 quote,
-                categories.category as category,
-                authors.author as author 
+                categories.category,
+                authors.author
                 FROM
                 " . $this->table . "
                 INNER JOIN
-                    categories ON quotes.category_id::varchar = categories.category
+                    categories ON quotes.category_id = categories.id
                 INNER JOIN
-                    authors ON quotes.author_id::varchar = authors.author";
+                    authors ON quotes.author_id = authors.id";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -47,9 +47,9 @@
             FROM
                 " . $this->table . " 
             INNER JOIN
-                categories ON quotes.category_id::varchar = categories.category
+                categories ON quotes.category_id = categories.id
             INNER JOIN
-                authors ON quotes.author_id::varchar = authors.author
+                authors ON quotes.author_id = authors.id
             WHERE
                 id =" .$_GET['id'] . ",
                 category_id =" .$_GET['category_id'] . ",
