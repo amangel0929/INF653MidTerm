@@ -55,7 +55,7 @@
                 category_id = ?,
                 author_id = ?
             LIMIT
-                0,1";
+                1";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);

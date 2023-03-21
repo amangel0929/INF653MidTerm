@@ -37,7 +37,7 @@
             WHERE
                 id = ?
             LIMIT
-                0,1";
+                1";
 
 
             //Prepare statement

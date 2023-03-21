@@ -35,7 +35,9 @@
             FROM
                 " . $this->table . "
             WHERE
-                id = ?";
+                id = ?
+            LIMIT
+                1";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
