@@ -15,7 +15,11 @@
 
 
     if($author->create()) {
-        echo json_encode(read_single());
+        $author_arr = array(
+            'id' => $author->id,
+            'author' => $author->author
+        );
+            print_r(json_encode($author_arr));
     } else {
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);
