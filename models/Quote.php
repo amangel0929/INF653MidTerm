@@ -25,9 +25,9 @@
                 FROM
                 " . $this->table . " q 
                 LEFT JOIN
-                    categories c ON q.category = c.category
+                    categories c ON q.category_id = c.category
                 LEFT JOIN
-                    authors a ON q.author = a.author";
+                    authors a ON q.author_id = a.author";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -48,9 +48,9 @@
             FROM
                 " . $this->table . " q
             LEFT JOIN
-                categories c ON q.category = c.category
+                categories c ON q.category_id = c.category
             LEFT JOIN
-                authors a ON q.author = a.author
+                authors a ON q.author_id = a.author
             WHERE
                 id = ?
             LIMIT 0,1";
