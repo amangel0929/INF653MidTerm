@@ -17,17 +17,17 @@
         public function read(){
             //Create query
             $query = "SELECT 
-                categories.category,
-                authors.author,
-                quotes.quote,
-                quotes.id 
+                c.category,
+                a.author,
+                q.quote,
+                q.id 
 
                 FROM
                 " . $this->table . " q 
                 LEFT JOIN
-                    categories ON quotes.category_id = categories.category
+                    categories c ON q.category_id = c.category
                 LEFT JOIN
-                    authors ON quotes.author_id = authors.author";
+                    authors a ON q.author_id = a.author";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -41,16 +41,16 @@
         //Get Single Post
         public function read_single() {
             $query = "SELECT
-                categories.category,
-                authors.author,
-                quotes.quote
+                c.category,
+                a.author,
+                q.quote
 
             FROM
-                " . $this->table . " 
+                " . $this->table . " q
             LEFT JOIN
-                categories ON quotes.category_id = categories.category
+                categories c ON q.category_id = c.category
             LEFT JOIN
-                authors ON quotes.author_id = authors.author
+                authors a ON q.author_id = a.author
             WHERE
                 id = ?
             LIMIT 0,1";
@@ -74,15 +74,15 @@
 
         //Create Quote
         public function create() {
-            $query = "INSERT INTO " . $this->table . "
+            $query = "INSERT INTO " . $this->table . " q
             SET
                 quote = :quote,
-                category = :categories.category,
-                author = :authors.author
+                category = :c.category,
+                author = :a.author
             LEFT JOIN
-                categories ON quotes.category_id = categories.category
+                categories c ON q.category_id = c.category
             LEFT JOIN
-                authors ON quotes.author_id = authors.author";
+                authors a ON q.author_id = a.author";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -109,15 +109,15 @@
 
         //Update Quote
         public function update() {
-            $query = "UPDATE " . $this->table . "
+            $query = "UPDATE " . $this->table . " q
             SET
                 quote = :quote,
-                category = :categories.category,
-                author = :authors.author
+                category = :c.category,
+                author = :a.author
             LEFT JOIN
-                categories ON quotes.category_id = categories.category
+                categories c ON q.category_id = c.category
             LEFT JOIN
-                authors ON quotes.author_id = authors.author
+                authors c ON q.author_id = a.author
             WHERE
                 id = :id";
 
@@ -131,8 +131,8 @@
 
             //Bind data
             $stmt->bindParam(':quote', $this->quote);
-            $stmt->bindParam(':authors.author', $this->author);
-            $stmt->bindParam(':categories.category', $this->category);
+            $stmt->bindParam(':a.author', $this->author);
+            $stmt->bindParam(':c.category', $this->category);
             
             //Execute query
             if($stmt->execute()){
