@@ -1,7 +1,7 @@
 <?php
 
     include_once '../../config/Database.php';
-    include_once '../../models/Category.php';
+    include_once '../../models/Quote.php';
 
     $database = new Database();
     $db = $database->connect();
