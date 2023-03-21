@@ -22,10 +22,10 @@
                 authors.author as author 
                 FROM
                 " . $this->table . "
-                LEFT JOIN
-                    categories ON quotes.category_id = categories.category
-                LEFT JOIN
-                    authors ON quotes.author_id = authors.author";
+                INNER JOIN
+                    categories ON quotes.category_id::varchar = categories.category
+                INNER JOIN
+                    authors ON quotes.author_id::varchar = authors.author";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -44,10 +44,10 @@
                 authors.author as author 
             FROM
                 " . $this->table . " 
-            LEFT JOIN
-                categories ON quotes.category_id = categories.category
-            LEFT JOIN
-                authors ON quotes.author_id = authors.author
+            INNER JOIN
+                categories ON quotes.category_id::varchar = categories.category
+            INNER JOIN
+                authors ON quotes.author_id::varchar = authors.author
             WHERE
                 id =" .$_GET['id'] . ",
                 category_id =" .$_GET['category_id'] . ",
