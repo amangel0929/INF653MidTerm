@@ -19,8 +19,8 @@
         'id' => $author->id,
         'author' => $author->author
     );
-    
-    if($author === null){
+
+    if(is_null($author)){
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);
     } else{
