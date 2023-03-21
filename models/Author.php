@@ -50,7 +50,8 @@
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             }catch(PDOException $e){
-                echo json_encode(
+                $author = false;
+                 echo json_encode(
                     array('message' => 'author_id Not Found')
                   ) . $e->getMessage();
             }
