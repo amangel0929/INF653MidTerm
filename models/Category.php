@@ -60,7 +60,6 @@
         public function create() {
             $query = "INSERT INTO " . $this->table . "
             VALUES
-                id,
                 category";
 
             //Prepare statement

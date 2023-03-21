@@ -11,7 +11,6 @@
     //Get raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
-    $category->id = $data->id;
     $category->category = $data->category;
 
 

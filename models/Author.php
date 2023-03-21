@@ -62,9 +62,9 @@
         //Create Author
         public function create() {
             $query = "INSERT INTO " . $this->table . "
-                (id, author)
+                (author)
             VALUES
-                (:id, :author)";
+                (:author)";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -73,7 +73,6 @@
             $this->author = htmlspecialchars(strip_tags($this->author));
 
             //Bind data
-            $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':author', $this->author);
             
             //Execute query
