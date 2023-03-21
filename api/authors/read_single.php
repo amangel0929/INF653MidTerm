@@ -20,7 +20,7 @@
         'author' => $author->author
     );
 
-    if($author_arr['author'] == false ||is_null($author_arr['author'])){
+    if(is_null($author_arr['author'])){
         echo json_encode(
             array('message' => 'author_id Not Found')
           );

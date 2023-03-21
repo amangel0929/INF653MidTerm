@@ -40,6 +40,7 @@
                 1";
 
 
+            try{
             //Prepare statement
             $stmt = $this->conn->prepare($query);
             //Bind ID
@@ -48,7 +49,11 @@
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
+            }catch(PDOException $e){
+                echo json_encode(
+                    array('message' => 'author_id Not Found')
+                  );
+            }
             $this->author = $row['author'];
 
         }

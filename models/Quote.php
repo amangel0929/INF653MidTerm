@@ -57,6 +57,7 @@
             LIMIT
                 1";
 
+            try{
             //Prepare statement
             $stmt = $this->conn->prepare($query);
 
@@ -67,7 +68,11 @@
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
+            }catch(PDOException $e){
+                echo json_encode(
+                    array('message' => 'No Quotes Found')
+                  );
+            }
             $this->id = $row['id'];
             $this->quote = $row['quote'];
             $this->category_id = $row['category_id'];

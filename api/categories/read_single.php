@@ -21,7 +21,7 @@
         'category' => $category->category
     );
 
-    if($category_arr['category'] == false || is_null($category_arr['category'])){
+    if(is_null($category_arr['category'])){
         echo json_encode(
             array('message' => 'category_id Not Found')
           );
