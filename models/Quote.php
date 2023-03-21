@@ -42,8 +42,8 @@
             $query = "SELECT 
                 quotes.id,
                 quotes.quote,
-                categories.category as category,
-                authors.author as author 
+                categories.category,
+                authors.author 
             FROM
                 " . $this->table . " 
             INNER JOIN
@@ -51,9 +51,11 @@
             INNER JOIN
                 authors ON quotes.author_id = authors.id
             WHERE
-                id =" .$_GET['id'] . ",
-                category_id =" .$_GET['category_id'] . ",
-                author_id =" .$_GET['author_id'];
+                id = ?,
+                category_id = ?,
+                author_id = ?
+            LIMIT
+                0,1";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);

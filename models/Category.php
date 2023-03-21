@@ -30,11 +30,12 @@
         //Get Single Post
         public function read_single() {
             $query = "SELECT
+                id,
                 category
             FROM
                 " . $this->table . "
             WHERE
-                id =".$_GET['id'];
+                id = ?";
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);

@@ -30,11 +30,15 @@
         //Get Single Post
         public function read_single() {
             $query = "SELECT
+                id,
                 author
             FROM
                 " . $this->table . "
             WHERE
-                id =".$_GET['id'];
+                id = ?
+            LIMIT
+                0,1";
+
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
