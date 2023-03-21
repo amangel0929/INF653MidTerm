@@ -17,8 +17,8 @@
 
     //Create array
     $category_arr = array(
-        'category' => $category->category,
-        'id' => $category->id
+        'id' => $category->id,
+        'category' => $category->category
     );
 
     //Make json

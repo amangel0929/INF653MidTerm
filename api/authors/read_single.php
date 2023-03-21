@@ -16,8 +16,8 @@
 
     //Create array
     $author_arr = array(
-        'author' => $author->author,
-        'id' => $author->id
+        'id' => $author->id,
+        'author' => $author->author
     );
 
     //Make json
