@@ -18,23 +18,9 @@
     $quote_arr = array(
         'id' => $quote->id,
         'quote' => $quote->quote,
-        'category' =>$quote->category,
-        'author' =>$quote->author
+        'category_id' =>$quote->category_id,
+        'author_id' =>$quote->author_id
     );
-    if(is_null($quote_arr['id'])){
-        echo json_encode(
-            array('message' => 'No Quotes Found')
-          );
-    } else if(is_null($quote_arr['category'])){
-        echo json_encode(
-            array('message' => 'category_id Not Found')
-          );
-    } else if(is_null($quote_arr['author'])){
-        echo json_encode(
-            array('message' => 'author_id Not Found')
-          );
-    } else{
         print_r(json_encode($quote_arr));
-    }
 
 ?>

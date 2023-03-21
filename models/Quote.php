@@ -71,7 +71,9 @@
                     array('message' => 'No Quotes Found')
                   );
             }
-            $this->id = $row['id'];
+            $this->quote = $row['quote'];
+            $this->category_id = $row['category_id'];
+            $this->author_id = $row['author_id'];
 
         }
 
