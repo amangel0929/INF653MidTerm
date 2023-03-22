@@ -19,7 +19,7 @@
     $quote->read_single();
 
     //Create array
-    if(read_single() === false){
+    if($quote->read_single() === false){
         echo json_encode(
             array('message' => 'No Quotes Found')
           );
