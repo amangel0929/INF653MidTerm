@@ -47,15 +47,10 @@
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            if($row['category'] === false){
-                echo json_encode(
-                    array('message' => 'category_id Not Found')
-                );
-            }else{
-            $this->category = $row['category'];
-            }
 
-        }
+            $this->category = $row['category'];
+
+
 
         //Create Category
         public function create() {

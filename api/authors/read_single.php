@@ -14,15 +14,12 @@
     //Get author
     $author->read_single();
 
-   //Create array
-   if(!(is_null('author'))){
-        $author_arr = array(
-            'id' => $author->id,
-            'author' => $author->author
-        );
-    }else{
-        echo json_encode(
-            array('message' => 'author_id Not Found')
-        );
-    }
+    //Create array
+    $author_arr = array(
+        'id' => $author->id,
+        'author' => $author->author
+    );
+
+        print_r(json_encode($author_arr));
 ?>
+
