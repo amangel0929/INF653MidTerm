@@ -19,6 +19,11 @@
     $quote->read_single();
 
     //Create array
+    if(read_single() === false){
+        echo json_encode(
+            array('message' => 'No Quotes Found')
+          );
+    }else{
     $quote_arr = array(
         'id' => $quote->id,
         'quote' => $quote->quote,
@@ -26,5 +31,6 @@
         'author' =>$author->author
     );
         print_r(json_encode($quote_arr));
+    }
 
 ?>
