@@ -12,13 +12,13 @@
     $data = json_decode(file_get_contents('php://input'));
 
     //Set ID to update
-    $author->id = $data->id;
-    $result = $author->update();
-    if(!$result->isValid()){
-        $message = array("message" => "author_id Not Found");
-        echo json_encode($message); 
-    }else{
-    $author->author = $data->author;
+    try{
+        $author->id = $data->id;
+        $author->author = $data->author;  
+    }catch(PDOException $e){
+        $e = array("message" => "author_id Not Found");
+        echo json_encode($e);
+    }
     
     if($author->update()){
         $result = $author_arr = array(
@@ -26,6 +26,5 @@
             'author' => $author->author
         );
         echo json_encode($result);
-    }
     }
 ?>
