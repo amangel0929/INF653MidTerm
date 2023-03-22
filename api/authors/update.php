@@ -13,7 +13,11 @@
 
     //Set ID to update
     $author->id = $data->id;
-
+    $result = $author->update();
+    if(!$result->isValid()){
+        $message = array("message" => "author_id Not Found");
+        echo json_encode($message); 
+    }else{
     $author->author = $data->author;
     
     if($author->update()){
@@ -22,8 +26,6 @@
             'author' => $author->author
         );
         echo json_encode($result);
-    }else{
-        $message = array("message" => "author_id Not Found");
-        echo json_encode($message);
+    }
     }
 ?>
