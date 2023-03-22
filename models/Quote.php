@@ -67,8 +67,8 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $this->quote = $row['quote'];
-            $this->category_id = $row['category_id'];
-            $this->author_id = $row['author_id'];
+            $this->category = $row['category'];
+            $this->author = $row['author'];
 
         }
 
