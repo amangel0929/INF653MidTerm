@@ -29,15 +29,15 @@
 
         //Get Single Post
         public function read_single() {
-            $query = "SELECT
+            $query = 'SELECT
                 id,
                 author
             FROM
-                " . $this->table . "
+                ' . $this->table . '
             WHERE
                 id = ?
             LIMIT
-                1";
+                1';
 
 
             try{

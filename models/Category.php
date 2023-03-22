@@ -29,15 +29,15 @@
 
         //Get Single Post
         public function read_single() {
-            $query = "SELECT
+            $query = 'SELECT
                 id,
                 category
             FROM
-                " . $this->table . "
+                ' . $this->table . '
             WHERE
                 id = ?
             LIMIT
-                1";
+                1';
             try{
             //Prepare statement
             $stmt = $this->conn->prepare($query);
