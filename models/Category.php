@@ -38,7 +38,7 @@
                 id = ?
             LIMIT
                 1';
-    
+            try{
             //Prepare statement
             $stmt = $this->conn->prepare($query);
             //Bind ID
@@ -47,10 +47,13 @@
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
             $this->category = $row['category'];
+            }catch(PDOException $e){
+                return false;
+            }
+            return true;
 
-
+        }
 
         //Create Category
         public function create() {
