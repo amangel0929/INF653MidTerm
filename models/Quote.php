@@ -122,11 +122,13 @@
             $stmt = $this->conn->prepare($query);
 
             //Clean data
+            $this->id = htmlspecialchars(strip_tags($this->id));
             $this->quote = htmlspecialchars(strip_tags($this->quote));
             $this->author_id = htmlspecialchars(strip_tags($this->author_id));
             $this->category_id = htmlspecialchars(strip_tags($this->category_id));
 
             //Bind data
+            $stmt->bindParam(':id', $this->id);
             $quoteVal = $stmt->bindParam(':quote', $this->quote);
             if(!($quoteVal)){
                 $message = array("message" => "No Quotes Found");
