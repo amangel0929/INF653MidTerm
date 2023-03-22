@@ -148,9 +148,12 @@
                 exit();
             }
             //Execute query
-            $stmt->execute();
-
-            return true;
+            if($stmt->execute()){
+                return true;
+            }
+            printf("Missing Required Parameters", stmt->error);
+            return false;
+            
         }
 
         //Delete Quote
