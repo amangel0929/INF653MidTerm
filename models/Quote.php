@@ -42,8 +42,8 @@
             $query = 'SELECT 
                 quotes.id,
                 quotes.quote,
-                categories.category,
-                authors.author 
+                categories.category as category,
+                authors.author as author
             FROM
                 ' . $this->table . ' 
             INNER JOIN
@@ -67,8 +67,8 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $this->quote = $row['quote'];
-            $this->categories.category = $row['category'];
-            $this->authors.author = $row['author'];
+            $this->category = $row['category'];
+            $this->author = $row['author'];
 
         }
 
