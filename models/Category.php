@@ -47,12 +47,11 @@
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            }catch(PDOException $e){
-                echo json_encode(
-                    array('message' => 'category_id Not Found')
-                  );
-            }
             $this->category = $row['category'];
+            }catch(PDOException $e){
+                return false;
+            }
+            return true;
 
         }
 

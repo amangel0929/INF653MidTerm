@@ -49,13 +49,12 @@
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->author = $row['author'];
             }catch(PDOException $e){
-                $author = false;
-                 echo json_encode(
-                    array('message' => 'author_id Not Found')
-                  ) . $e->getMessage();
+                return false;
             }
             $this->author = $row['author'];
+            return true;
 
         }
 
