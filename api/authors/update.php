@@ -15,7 +15,7 @@
     try{
         $author->id = $data->id;
         $author->author = $data->author;  
-    }catch(PDOException $e){
+    }catch(Exception $e){
         $e = array("message" => "author_id Not Found");
         echo json_encode($e);
     }
