@@ -95,9 +95,9 @@
             //Execute query
             if($stmt->execute()){
                 return true;
+            } else{
+                printf("Missing Required Parameters", $stmt->error);
             }
-
-            printf("Missing Required Parameters", $stmt->error);
 
             return false;
         }
