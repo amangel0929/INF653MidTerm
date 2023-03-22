@@ -1,4 +1,5 @@
 <?php
+    #[AllowDynamicProperties]
     class Quote{
         private $conn;
         private $table = 'quotes';
@@ -67,8 +68,8 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $this->quote = $row['quote'];
-            $this->category_id = $row['category'];
-            $this->author_id = $row['author'];
+            $this->category = $row['category'];
+            $this->author = $row['author'];
 
         }
 
