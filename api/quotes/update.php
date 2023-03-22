@@ -15,15 +15,15 @@
     $quote->id = $data->id;
 
     $quote->quote = $data->quote;
-    $quote->category_id = $data->category_id;
     $quote->author_id = $data->author_id;
+    $quote->category_id = $data->category_id;
 
     if($quote->update()) {
         $result = $quote_arr = array(
             'id' => $quote->id,
             'quote' => $quote->quote,
-            'category_id' => $quote->category_id,
-            'author_id' => $quote->author_id
+            'author_id' => $quote->author_id,
+            'category_id' => $quote->category_id
         );
         echo json_encode($result);
     } else {

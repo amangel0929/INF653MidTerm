@@ -127,17 +127,26 @@
             $this->category_id = htmlspecialchars(strip_tags($this->category_id));
 
             //Bind data
-            $stmt->bindParam(':quote', $this->quote);
-            $stmt->bindParam(':author_id', $this->author_id);
-            $stmt->bindParam(':category_id', $this->category_id);
-            
-            //Execute query
-            $stmt->execute();
-            if(!($this->quote) || !($this->author_id) || !($this->category_id)){
-                $message = array("message" => "Missing Required Parameters");
+            $quoteVal = $stmt->bindParam(':quote', $this->quote);
+            if(!($quoteVal)){
+                $message = array("message" => "No Quotes Found");
                 echo json_encode($message);
                 exit();
             }
+            $authorVal = $stmt->bindParam(':author_id', $this->author_id);
+            if(!($authorVal)){
+                $message = array("message" => "author_id Not Found");
+                echo json_encode($message);
+                exit();
+            }
+            $categoryVal = $stmt->bindParam(':category_id', $this->category_id);
+            if(!($categoryVal)){
+                $message = array("message" => "category_id Not Found");
+                echo json_encode($message);
+                exit();
+            }
+            //Execute query
+            $stmt->execute();
 
             return true;
         }
@@ -153,16 +162,15 @@
              $this->id = htmlspecialchars(strip_tags($this->id));
 
             //Bind data
-            $stmt->bindParam(':id', $this->id);
+            $new = $stmt->bindParam(':id', $this->id);
 
             //Execute query
-            $stmt->execute();
-            if(!($this->id)){
+            if(!($new)){
                 $message = array("message" => "No Quotes Found");
                 echo json_encode($message);
                 exit();
             }
-
+            $stmt->execute();
             return true;
         }
     }
