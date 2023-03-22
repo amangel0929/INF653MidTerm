@@ -51,7 +51,7 @@
             INNER JOIN
                 authors ON quotes.author_id = authors.id
             WHERE
-                id = ?
+                quotes.id = ?
             LIMIT
                 1';
 
