@@ -48,7 +48,10 @@
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
+            if(!$row){
+                echo json_encode('message' => "author_id Not Found");
+                exit();
+            }
             $this->author = $row['author'];
 
         }
@@ -68,13 +71,13 @@
             $stmt->bindParam(':author', $this->author);
             
             //Execute query
-            if($stmt->execute()){
-                return true;
+            $stmt->execute();
+            if(!($this->author)){
+                echo json_encode('message' => "Missing Required Parameters");
+                exit();
             }
 
-            printf("Missing Required Parameters", $stmt->error);
-
-            return false;
+            return true;
         }
 
         //Update Author
@@ -97,13 +100,14 @@
             $stmt->bindParam(':author', $this->author);
             
             //Execute query
-            if($stmt->execute()){
-                return true;
-            }else{
-                printf("Missing Required Parameters", $stmt->error);
+            $stmt->execute();
+            if(!($this->author) || !($this->id)){
+                echo json_encode('message' => "Missing Required Parameters");
+                exit();
             }
 
-            return false;
+            return true;
+
         }
 
         //Delete Author
@@ -120,14 +124,13 @@
             $stmt->bindParam(':id', $this->id);
 
             //Execute query
-            if($stmt->execute()){
-                return true;
+            $stmt->execute();
+            if(!($this->id)){
+                echo json_encode('message' => "author_id Not Found");
+                exit();
             }
 
-            //Print error if something goes wrong
-            printf("Missing Required Parameters", $stmt->error);
-
-            return false;
+            return true;
         }
     }
 ?>
