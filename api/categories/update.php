@@ -16,11 +16,11 @@
     $category->category = $data->category;
 
     if($category->update()){
-        $result = $author_arr = array(
+        $category_arr = array(
             'id' => $category->id,
             'category' => $category->category
         );
-        echo json_encode($result);
+        echo json_encode($category_arr);
     }else{
         $message = array("message" => "category_id Not Found");
         echo json_encode($message);

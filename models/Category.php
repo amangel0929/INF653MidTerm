@@ -81,11 +81,11 @@
 
         //Update Category
         public function update() {
-            $query = "UPDATE " . $this->table . "
+            $query = 'UPDATE ' . $this->table . '
             SET
                 category = :category
             WHERE
-                id = :id";
+                id = :id';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);

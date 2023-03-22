@@ -13,9 +13,10 @@
 
     //Set ID to update
     $quote->id = $data->id;
+
     $quote->quote = $data->quote;
-    $quote->author_id = $data->author_id;
     $quote->category_id = $data->category_id;
+    $quote->author_id = $data->author_id;
 
     if($quote->update()) {
         $result = $quote_arr = array(
@@ -25,7 +26,7 @@
             'author_id' => $quote->author_id
         );
         echo json_encode($result);
-    } else{
+    } else {
         $message = array("message" => "No Quotes Found");
         echo json_encode($message);
     }

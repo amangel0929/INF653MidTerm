@@ -21,10 +21,10 @@
     }
     
     if($author->update()){
-        $result = $author_arr = array(
+        $author_arr = array(
             'id' => $author->id,
             'author' => $author->author
         );
-        echo json_encode($result);
+        echo json_encode($author_arr);
     }
 ?>
