@@ -15,7 +15,7 @@
     $author->read_single();
 
    //Create array
-   if($author->read_single()->isValid('id')){
+   if(!(is_null('author'))){
         $author_arr = array(
             'id' => $author->id,
             'author' => $author->category
