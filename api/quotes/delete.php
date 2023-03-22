@@ -15,7 +15,7 @@
     $quote->id = $data->id;
 
     //Delete quote
-    if($quote->delete()) {
+    if($quote->delete() === true) {
         $quote_arr = array(
             'id' => $quote->id
         );
