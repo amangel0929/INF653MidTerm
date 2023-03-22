@@ -53,7 +53,6 @@
             }catch(PDOException $e){
                 return false;
             }
-            $this->author = $row['author'];
             return true;
 
         }

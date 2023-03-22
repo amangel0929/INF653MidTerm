@@ -55,7 +55,6 @@
             LIMIT
                 1';
 
-            try{
             //Prepare statement
             $stmt = $this->conn->prepare($query);
 
@@ -71,10 +70,6 @@
             $this->category_id = $row['category_id'];
             $this->author_id = $row['author_id'];
 
-            }catch(PDOException $e){
-                return false;
-            }
-            return true;
         }
 
         //Create Quote
