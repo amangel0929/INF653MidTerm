@@ -15,14 +15,14 @@
 
     $category->category = $data->category;
 
-    if(is_null($id)){
-        $message = array("message" => "category_id Not Found");
-        echo json_encode($message);    
-    } else if($category->update()) {
-        $result = $category_arr = array(
+    if($category->update()){
+        $result = $author_arr = array(
             'id' => $category->id,
             'category' => $category->category
         );
         echo json_encode($result);
-    } 
+    }else{
+        $message = array("message" => "category_id Not Found");
+        echo json_encode($message);
+    }
 ?>

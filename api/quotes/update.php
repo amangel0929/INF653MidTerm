@@ -20,10 +20,10 @@
     if(is_null($id)){
         $message = array("message" => "No Quotes Found");
         echo json_encode($message);
-    }if(is_null($category_id)){
+    }else if(is_null($category_id)){
         $message = array("message" => "category_id Not Found");
         echo json_encode($message);
-    }if(is_null($author_id)){
+    }else if(is_null($author_id)){
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);
     }else if($quote->update()) {
