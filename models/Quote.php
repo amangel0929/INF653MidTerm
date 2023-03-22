@@ -67,7 +67,8 @@
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             if(!$row){
-                echo json_encode('message' => "No Quotes Found");
+                $message = array("message" => "No Quotes Found");
+                echo json_encode($message);
                 exit();
             }
 
@@ -99,7 +100,8 @@
             //Execute query
             $stmt->execute();
             if(!($this->quote) || !($this->author_id) || !($this->category_id)){
-                echo json_encode('message' => "Missing Required Parameters");
+                $message = array("message" => "Missing Required Parameters");
+                echo json_encode($message);
                 exit();
             }
 
@@ -132,7 +134,8 @@
             //Execute query
             $stmt->execute();
             if(!($this->quote) || !($this->author_id) || !($this->category_id)){
-                echo json_encode('message' => "Missing Required Parameters");
+                $message = array("message" => "Missing Required Parameters");
+                echo json_encode($message);
                 exit();
             }
 
@@ -155,7 +158,8 @@
             //Execute query
             $stmt->execute();
             if(!($this->id)){
-                echo json_encode('message' => "No Quotes Found");
+                $message = array("message" => "No Quotes Found");
+                echo json_encode($message);
                 exit();
             }
 

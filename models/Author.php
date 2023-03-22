@@ -49,7 +49,8 @@
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             if(!$row){
-                echo json_encode('message' => "author_id Not Found");
+                $message = array("message" => "author_id Not Found");
+                echo json_encode($message);
                 exit();
             }
             $this->author = $row['author'];
@@ -73,7 +74,8 @@
             //Execute query
             $stmt->execute();
             if(!($this->author)){
-                echo json_encode('message' => "Missing Required Parameters");
+                $message = array("message" => "Missing Required Parameters");
+                echo json_encode($message);
                 exit();
             }
 
@@ -102,7 +104,8 @@
             //Execute query
             $stmt->execute();
             if(!($this->author) || !($this->id)){
-                echo json_encode('message' => "Missing Required Parameters");
+                $message = array("message" => "Missing Required Parameters");
+                echo json_encode($message);
                 exit();
             }
 
@@ -126,7 +129,8 @@
             //Execute query
             $stmt->execute();
             if(!($this->id)){
-                echo json_encode('message' => "author_id Not Found");
+                $message = array("message" => "author_id Not Found");
+                echo json_encode($message);
                 exit();
             }
 
