@@ -66,6 +66,10 @@
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            if(!$row){
+                echo json_encode('message' => "No Quotes Found");
+                exit();
+            }
 
             $this->quote = $row['quote'];
             $this->category = $row['category'];
@@ -93,13 +97,13 @@
             $stmt->bindParam(':category_id', $this->category_id);
             
             //Execute query
-            if($stmt->execute()){
-                return true;
-            } else{
-                printf("Missing Required Parameters", $stmt->error);
+            $stmt->execute();
+            if(!($this->quote) || !($this->author_id) || !($this->category_id)){
+                echo json_encode('message' => "Missing Required Parameters");
+                exit();
             }
 
-            return false;
+            return true;
         }
 
         //Update Quote
@@ -126,13 +130,13 @@
             $stmt->bindParam(':category_id', $this->category_id);
             
             //Execute query
-            if($stmt->execute()){
-                return true;
+            $stmt->execute();
+            if(!($this->quote) || !($this->author_id) || !($this->category_id)){
+                echo json_encode('message' => "Missing Required Parameters");
+                exit();
             }
 
-            printf("Missing Required Parameters", $stmt->error);
-
-            return false;
+            return true;
         }
 
         //Delete Quote
@@ -149,14 +153,13 @@
             $stmt->bindParam(':id', $this->id);
 
             //Execute query
-            if($stmt->execute()){
-                return true;
+            $stmt->execute();
+            if(!($this->id)){
+                echo json_encode('message' => "No Quotes Found");
+                exit();
             }
 
-            //Print error if something goes wrong
-            printf("No Quotes Found", $stmt->error);
-
-            return false;
+            return true;
         }
     }
 ?>

@@ -38,7 +38,7 @@
                 id = ?
             LIMIT
                 1';
-            try{
+            
             //Prepare statement
             $stmt = $this->conn->prepare($query);
             //Bind ID
@@ -47,11 +47,12 @@
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->category = $row['category'];
-            }catch(PDOException $e){
-                return false;
+            if(!$row){
+                echo json_encode('message' => "category_id Not Found");
+                exit();
             }
-            return true;
+            $this->category = $row['category'];
+            
 
         }
 
@@ -70,13 +71,13 @@
             $stmt->bindParam(':category', $this->category);
             
             //Execute query
-            if($stmt->execute()){
-                return true;
-            }else{
-                printf("Missing Required Parameters", $stmt->error);
+            $stmt->execute();
+            if(!($this->category)){
+                echo json_encode('message' => "Missing Required Parameters");
+                exit();
             }
 
-            return false;
+            return true;
         }
 
         //Update Category
@@ -99,13 +100,13 @@
             $stmt->bindParam(':category', $this->category);
             
             //Execute query
-            if($stmt->execute()){
-                return true;
+            $stmt->execute();
+            if(!($this->category || !($this->id))){
+                echo json_encode('message' => "Missing Required Parameters");
+                exit();
             }
 
-            printf("Missing Required Parameters", $stmt->error);
-
-            return false;
+            return true;
         }
 
         //Delete Category
@@ -122,14 +123,12 @@
             $stmt->bindParam(':id', $this->id);
 
             //Execute query
-            if($stmt->execute()){
-                return true;
+            $stmt->execute();
+            if(!($this->id)){
+                echo json_encode('message' => "author_id Not Found");
+                exit();
             }
 
-            //Print error if something goes wrong
-            printf("Missing Required Parameters", $stmt->error);
-
-            return false;
-        }
+            return true;
     }
 ?>

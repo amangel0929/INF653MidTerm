@@ -15,17 +15,11 @@
     $author->read_single();
 
     //Create array
-    if($author->read_single() === false){
-        echo json_encode(
-            array('message' => 'author_id Not Found')
-          );
-    }else{
     $author_arr = array(
         'id' => $author->id,
         'author' => $author->author
     );
 
         print_r(json_encode($author_arr));
-}
 ?>
 

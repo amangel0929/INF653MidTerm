@@ -16,16 +16,12 @@
     $category->read_single();
 
     //Create array
-    if($category->read_single() === false){
-        echo json_encode(
-            array('message' => 'category_id Not Found')
-          );
-    }else{
+    
     $category_arr = array(
         'id' => $category->id,
         'category' => $category->category
     );
 
         print_r(json_encode($category_arr));
-}
+
 ?>
