@@ -22,7 +22,7 @@
             'author' => $author->author
         );
         echo json_encode($result);
-    }else if($author->!update()) {
+    }else{
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);
     }
