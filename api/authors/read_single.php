@@ -18,7 +18,7 @@
    if(!(is_null('author'))){
         $author_arr = array(
             'id' => $author->id,
-            'author' => $author->category
+            'author' => $author->author
         );
     }else{
         echo json_encode(
