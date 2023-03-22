@@ -120,33 +120,32 @@
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
-
+            //check if null before cleaning
+            if(!($this->quote)){
+                $message = array("message" => "No Quotes Found");
+                echo json_encode($message);
+                exit();
+            } else if (!($this->author_id)){
+                $message = array("message" => "author_id Not Found");
+                echo json_encode($message);
+                exit();
+            } else if (!($this->category_id)){
+                $message = array("message" => "category_id Not Found");
+                echo json_encode($message);
+                exit();
+            }
             //Clean data
             $this->id = htmlspecialchars(strip_tags($this->id));
             $this->quote = htmlspecialchars(strip_tags($this->quote));
             $this->author_id = htmlspecialchars(strip_tags($this->author_id));
             $this->category_id = htmlspecialchars(strip_tags($this->category_id));
-
+            
             //Bind data
             $stmt->bindParam(':id', $this->id);
-            $quoteVal = $stmt->bindParam(':quote', $this->quote);
-            if(!($quoteVal)){
-                $message = array("message" => "No Quotes Found");
-                echo json_encode($message);
-                exit();
-            }
-            $authorVal = $stmt->bindParam(':author_id', $this->author_id);
-            if(!($authorVal)){
-                $message = array("message" => "author_id Not Found");
-                echo json_encode($message);
-                exit();
-            }
-            $categoryVal = $stmt->bindParam(':category_id', $this->category_id);
-            if(!($categoryVal)){
-                $message = array("message" => "category_id Not Found");
-                echo json_encode($message);
-                exit();
-            }
+            $stmt->bindParam(':quote', $this->quote);
+            $stmt->bindParam(':author_id', $this->author_id);
+            $stmt->bindParam(':category_id', $this->category_id);
+
             //Execute query
             if($stmt->execute()){
                 return true;
