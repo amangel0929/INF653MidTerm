@@ -66,14 +66,15 @@
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            $this->quote = $row['quote'];
+            $this->category_id = $row['category_id'];
+            $this->author_id = $row['author_id'];
             }catch(PDOException $e){
                 echo json_encode(
                     array('message' => 'No Quotes Found')
                   );
             }
-            $this->quote = $row['quote'];
-            $this->category_id = $row['category_id'];
-            $this->author_id = $row['author_id'];
 
         }
 
