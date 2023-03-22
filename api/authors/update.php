@@ -18,7 +18,10 @@
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);
     }else if($author->update()) {
-        $message = array("message" => "Author Updated");
-        echo json_encode($message);
+        $result = $author_arr = array(
+            'id' => $author->id,
+            'author' => $author->author
+        );
+        echo json_encode($result);
     }
 ?>

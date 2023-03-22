@@ -19,7 +19,10 @@
         $message = array("message" => "category_id Not Found");
         echo json_encode($message);    
     } else if($category->update()) {
-        $message = array("message" => "Category Updated");
-        echo json_encode($message);
+        $result = $category_arr = array(
+            'id' => $category->id,
+            'category' => $category->category
+        );
+        echo json_encode($result);
     } 
 ?>

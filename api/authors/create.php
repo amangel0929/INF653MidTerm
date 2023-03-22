@@ -11,16 +11,15 @@
     //Get raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
-    $author->id = isset($_GET['id']) ? $_GET['id'] : die();
     $author->author = $data->author;
 
 
     if($author->create()) {
-        $author_arr = array(
+        $result = $author_arr = array(
             'id' => $author->id,
             'author' => $author->author
         );
-            print_r(json_encode($author_arr));
+        echo json_encode($result);
     } else {
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);

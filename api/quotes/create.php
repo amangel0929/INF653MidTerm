@@ -17,8 +17,13 @@
 
 
     if($quote->create()) {
-        $message = array("message" => "Quote Created");
-        echo json_encode($message);
+        $result = $quote_arr = array(
+            'id' => $quote->id,
+            'quote' => $quote->quote,
+            'category_id' => $quote->category_id,
+            'author_id' => $quote->author_id
+        );
+        echo json_encode($result);
     } else {
         $message = array("message" => "No Quotes Found");
         echo json_encode($message);

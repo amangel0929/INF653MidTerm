@@ -15,8 +15,11 @@
 
 
     if($category->create()) {
-        $message = array("message" => "Category Created");
-        echo json_encode($message);
+        $result = $category_arr = array(
+            'id' => $category->id,
+            'author' => $category->category
+        );
+        echo json_encode($result);
     } else {
         $message = array("message" => "category_id Not Found");
         echo json_encode($message);

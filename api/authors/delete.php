@@ -17,7 +17,7 @@
     //Delete author
     if($author->delete()) {
         $result = $author_arr = array(
-            'id' => $author->id,
+            'id' => $author->id
         );
         echo json_encode($result);
     }else if(is_null($author_id)){

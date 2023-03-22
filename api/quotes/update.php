@@ -27,7 +27,12 @@
         $message = array("message" => "author_id Not Found");
         echo json_encode($message);
     }else if($quote->update()) {
-        $message = array("message" => "Quote Updated");
-        echo json_encode($message);
+        $result = $quote_arr = array(
+            'id' => $quote->id,
+            'quote' => $quote->quote,
+            'category_id' => $quote->category_id,
+            'author_id' => $quote->author_id
+        );
+        echo json_encode($result);
     }
 ?>

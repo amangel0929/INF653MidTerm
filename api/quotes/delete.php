@@ -16,8 +16,10 @@
 
     //Delete quote
     if($quote->delete()) {
-        $message = array("message" => "Quote Deleted");
-        echo json_encode($message);
+        $quote_arr = array(
+            'id' => $quote->id
+        );
+            print_r(json_encode($quote_arr));
     } else {
         $message = array("message" => "No Quotes Found");
         echo json_encode($message);
