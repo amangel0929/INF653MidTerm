@@ -14,14 +14,15 @@
     //Get author
     $author->read_single();
 
-    //Create array
-    if ($author->read_single() === true){
-    $author_arr = array(
-        'id' => $author->id,
-        'author' => $author->author
-    );
-
-        print_r(json_encode($author_arr));
+   //Create array
+   if($author->read_single()->isValid('id')){
+        $author_arr = array(
+            'id' => $author->id,
+            'author' => $author->category
+        );
+    }else{
+        echo json_encode(
+            array('message' => 'author_id Not Found')
+        );
     }
 ?>
-
