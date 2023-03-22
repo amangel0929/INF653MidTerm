@@ -158,7 +158,7 @@
             }
 
             //Print error if something goes wrong
-            printf("Missing Required Parameters", $stmt->error);
+            printf("No Quotes Found", $stmt->error);
 
             return false;
         }

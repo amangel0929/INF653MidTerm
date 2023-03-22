@@ -17,11 +17,11 @@
     if($category->create()) {
         $result = $category_arr = array(
             'id' => $category->id,
-            'author' => $category->category
+            'category' => $category->category
         );
         echo json_encode($result);
     } else {
-        $message = array("message" => "category_id Not Found");
+        $message = array("message" => "Missing Required Parameters");
         echo json_encode($message);
     }
 ?>

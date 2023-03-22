@@ -21,7 +21,7 @@
         );
         echo json_encode($result);
     } else {
-        $message = array("message" => "author_id Not Found");
+        $message = array("message" => "Missing Required Parameter");
         echo json_encode($message);
     }
 ?>
