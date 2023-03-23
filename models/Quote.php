@@ -170,8 +170,7 @@
 
             //Execute query
             $stmt->execute();
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            if(!$row){
+            if(!($this->id)){
                 $message = array("message" => "No Quotes Found");
                 echo json_encode($message);
                 exit();
