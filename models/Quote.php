@@ -167,7 +167,7 @@
 
             //Bind data
             $stmt->bindParam(':id', $this->id);
-            if (isValid(read_single()) === true){
+            if (read_single() === true){
                 //Execute query
                 $stmt->execute();
                 return true;
