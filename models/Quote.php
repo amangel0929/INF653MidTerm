@@ -166,16 +166,16 @@
              $this->id = htmlspecialchars(strip_tags($this->id));
 
             //Bind data
-            $new = $stmt->bindParam(':id', $this->id);
+            $stmt->bindParam(':id', $this->id);
 
             //Execute query
+            $stmt->execute();
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             if(!$row){
                 $message = array("message" => "No Quotes Found");
                 echo json_encode($message);
                 exit();
             }
-            $stmt->execute();
             return true;
         }
     }
