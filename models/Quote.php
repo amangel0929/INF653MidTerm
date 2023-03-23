@@ -167,16 +167,15 @@
 
             //Bind data
             $stmt->bindParam(':id', $this->id);
-            if (read_single() === true){
-                //Execute query
-                $stmt->execute();
-                return true;
-            } else{
+
+            //Execute query
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            if(!$row){
                 $message = array("message" => "No Quotes Found");
                 echo json_encode($message);
                 exit();
             }
-    
-        }
+            return true;
     }
 ?>
