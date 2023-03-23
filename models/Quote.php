@@ -167,15 +167,16 @@
 
             //Bind data
             $stmt->bindParam(':id', $this->id);
-
-            //Execute query
-            $stmt->execute();
-            if(!($this->id)){
+            if (isValid(read_single()) === true){
+                //Execute query
+                $stmt->execute();
+                return true;
+            } else{
                 $message = array("message" => "No Quotes Found");
                 echo json_encode($message);
                 exit();
             }
-            return true;
+    
         }
     }
 ?>
