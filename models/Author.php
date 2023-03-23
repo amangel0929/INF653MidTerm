@@ -73,7 +73,7 @@
             
             //Execute query
             $stmt->execute();
-            if(!($this->author)){
+            if(is_null(':author')){
                 $message = array("message" => "Missing Required Parameters");
                 echo json_encode($message);
                 exit();
@@ -103,7 +103,7 @@
             
             //Execute query
             $stmt->execute();
-            if(!($this->author) || !($this->id)){
+            if(is_null(':id') || is_null('author')){
                 $message = array("message" => "Missing Required Parameters");
                 echo json_encode($message);
                 exit();
