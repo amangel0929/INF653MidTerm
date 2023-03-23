@@ -169,14 +169,11 @@
             $stmt->bindParam(':id', $this->id);
 
             //Execute query
-            $stmt->execute();
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            if(!$row){
-                $message = array("message" => "No Quotes Found");
-                echo json_encode($message);
-                exit();
+            if($stmt->execute()){
+                return true;
             }
-            return true;
+            return false;
+            
     }
 }
 ?>
